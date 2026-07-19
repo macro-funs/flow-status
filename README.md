@@ -17,6 +17,14 @@ A [Claude Code](https://claude.com/claude-code) plugin (and installable skill) t
 curl -fsSL https://raw.githubusercontent.com/macro-funs/flow-status/main/skills/flow-status/install.sh | bash
 ```
 
+## On install
+
+When installed via the plugin marketplace, a `SessionStart` hook checks whether
+your PAT is configured and prints a short setup hint if not - so a fresh
+`/plugin install` won't fail silently on first use. (The curl install runs
+`install.sh`, which sets this up interactively.) Once a token is present the
+hook is silent.
+
 ## Next steps
 
 After installing, configure your PAT and verify the connection — see
