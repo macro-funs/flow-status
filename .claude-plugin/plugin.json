@@ -1,0 +1,12 @@
+{
+  "name": "flow-status",
+  "description": "Connect Claude Code to a flow-status instance and manage its todos (tasks/lists/tags) over MCP, authenticated with a Personal Access Token.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Macroldj",
+    "url": "https://github.com/macro-funs/flow-status"
+  },
+  "homepage": "https://github.com/macro-funs/flow-status",
+  "repository": "https://github.com/macro-funs/flow-status",
+  "keywords": ["flow-status", "mcp", "tasks", "todos", "integrations"]
+}
