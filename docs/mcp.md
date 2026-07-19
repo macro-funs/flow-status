@@ -4,7 +4,7 @@
 
 ## Endpoint
 
-- **URL:** `POST http://<host>:8083/mcp`
+- **URL:** `POST https://flows.durgin.top/mcp`
 - **Protocol:** MCP `2025-06-18`, JSON-RPC 2.0, **Streamable HTTP** transport.
 - **Stateless:** the server does not issue or validate `Mcp-Session-Id`; each request is self-contained. Responses are `Content-Type: application/json`. Notifications (JSON-RPC messages without `id`) receive `HTTP 202` with no body. `GET /mcp` (SSE streaming) is not supported in v1.
 - **Content type:** send `Content-Type: application/json`. `Accept: application/json, text/event-stream` is fine; the server always answers with `application/json`.
@@ -69,7 +69,7 @@ Configure a Streamable HTTP server pointing at the endpoint, sending the JWT as 
 {
   "mcpServers": {
     "flow-status": {
-      "url": "http://localhost:8083/mcp",
+      "url": "https://flows.durgin.top/mcp",
       "headers": { "Authorization": "Bearer <your-jwt>" }
     }
   }
@@ -83,28 +83,7 @@ Configure a Streamable HTTP server pointing at the endpoint, sending the JWT as 
 For Claude Code specifically, install the **flow-status skill** instead of hand-configuring headers - it wraps the same `/mcp` endpoint with a PAT and exposes all 23 tools. One-click:
 
 ```
-curl -fsSL https://raw.githubusercontent.com/Macroldj/flow-status/main/.claude/skills/flow-status/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/macro-funs/flow-status/main/install.sh | bash
 ```
 
-Or via the plugin marketplace: `/plugin marketplace add Macroldj/flow-status` then `/plugin install flow-status`. Full setup (PAT, config, troubleshooting): `.claude/skills/flow-status/README.md`.
-
-
-```yaml
-  - job_name: "flow-status-app"
-    # 抓取间隔，可根据需求调整
-    scrape_interval: 15s
-    # 指标路径，固定为 actuator/prometheus
-    metrics_path: "/actuator/prometheus"
-    # 目标实例地址
-    
-    static_configs:
-      - targets: ["192.168.1.4:8083"]
-        labels:
-          env: "prod"
-          service: "flow-status"
-          
-      - targets: ["192.168.1.9:8083"]
-        labels:
-          env: "dev"
-          service: "flow-status"
-```
+Or via the plugin marketplace: `/plugin marketplace add macro-funs/flow-status` then `/plugin install flow-status`. Full setup (PAT, config, troubleshooting): `.claude/skills/flow-status/README.md`.
