@@ -2,6 +2,8 @@
 
 A [Claude Code](https://claude.com/claude-code) plugin (and installable skill) that connects Claude Code to a [flow-status](https://github.com/macro-funs/flow-status) instance, letting you view / create / update / complete / delete tasks, lists, and tags over MCP — authenticated with a Personal Access Token (PAT).
 
+[flow-status website](https://flows.durgin.top/), this is a website for managing tasks, lists, and tags over MCP.
+
 ## Install
 
 **Option 1 — Claude Code plugin marketplace (native):**
